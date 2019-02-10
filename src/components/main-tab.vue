@@ -75,17 +75,17 @@ export default {
     created() {
         this.$store.dispatch('loadNewData');
 
-        // let self = this;
-        // this.ws = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,monero,litecoin')
+        let self = this;
+        this.ws = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum,monero,litecoin')
 
-        //     this.ws.onopen = function () {
-        //         console.log('Соединение с CoinCap.io установлено');
-        //     }
+            this.ws.onopen = function () {
+                console.log('Соединение с CoinCap.io установлено');
+            }
 
-        //     this.ws.onmessage = function (msg) {
-        //         self.$store.dispatch('updateCurrentData', msg);
-        //         // console.log('Данные обновлены ' + JSON.stringify(msg.data));
-        //     }
+            this.ws.onmessage = function (msg) {
+                self.$store.dispatch('updateCurrentData', msg.data);
+                // console.log('Данные обновлены ' + JSON.stringify(msg.data));
+            }
     },
     filters: {
         currency(value) {

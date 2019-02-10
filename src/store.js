@@ -20,10 +20,24 @@ export default new Vuex.Store({
         .then(response => state.commit('changeCurrentData', response.data))
         .catch(err => console.log(err.msg))
     },
-    // updateCurrentData(state, newData) {
+    updateCurrentData(state, data) {
       
-    //   console.log(newData);
+      let arr = this.state.data.data;
+      let newData = JSON.parse(data);
 
-    // }
+      Object.keys(newData).forEach(item => {
+        for(let i=0; i<arr.length; i++) {
+          if(arr[i].id == item) {
+            console.log(newData[item]);
+            arr[i].priceUsd = newData[item];
+          }
+        }
+      });
+
+      
+
+      // console.log(newData);
+
+    }
   }
 })
