@@ -84,7 +84,7 @@ export default {
 
         //     this.ws.onmessage = function (msg) {
         //         self.$store.dispatch('updateCurrentData', msg);
-        //         console.log('Данные обновлены');
+        //         // console.log('Данные обновлены ' + JSON.stringify(msg.data));
         //     }
     },
     filters: {
@@ -92,11 +92,6 @@ export default {
             return `$${Math.floor(value * 100) / 100}`
         }
     
-    },
-    methods: {
-        updateCurrentData(a) {
-            this.$store.dispatch('updateCurrentData');
-        }
     }
 }
 </script>

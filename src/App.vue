@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <app-list></app-list>
+    <main-tab></main-tab>
   </div>
 </template>
 
 <script>
-import appList from './components/app-list.vue'
+import mainTab from './components/main-tab.vue'
 
 export default {
   name: 'app',
   components: {
-    appList
+    mainTab
   },
   computed: {
     check() {
