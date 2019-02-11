@@ -1,6 +1,5 @@
 <template>
     <div class="conteiner">
-
         <div class="table-desktop" v-if="$mq === 'lg'">
             <table>
                 <thead>
@@ -44,7 +43,7 @@
                 </thead>
 
                 <tbody>
-                    <tr v-for='item in cryptoCurrencyItems.data'>
+                    <tr v-for='(item, index) in cryptoCurrencyItems.data'>
                         <td>{{ item.rank }}</td>
                         <td>{{ item.name }} <span class='item-tag'>{{ item.symbol }}</span></td>  
                         <td>{{ item.priceUsd | currency }}</td>
@@ -64,7 +63,7 @@ export default {
     name: 'app-list',
     data: function() {
         return {
-            ws: null
+            ws: null,
         }
     },
     computed: {
@@ -84,7 +83,6 @@ export default {
 
             this.ws.onmessage = function (msg) {
                 self.$store.dispatch('updateCurrentData', msg.data);
-                // console.log('Данные обновлены ' + JSON.stringify(msg.data));
             }
     },
     filters: {
@@ -143,6 +141,8 @@ export default {
 
         }
 
+
+
     table {
         width: 55vw;
         table-layout: fixed;
@@ -176,7 +176,6 @@ export default {
 
         tbody tr {
             border-bottom: .5px solid rgb(238, 238, 238);
-
 
             &:hover {
                 background-color: #f5f5f5;

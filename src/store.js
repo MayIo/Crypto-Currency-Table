@@ -6,11 +6,11 @@ const axios = require('axios');
 
 export default new Vuex.Store({
   state: {
-    data: 0
+    data: 0,
   },
   mutations: {
     changeCurrentData(state, newData) {
-        state.data = newData
+        state.data = newData;
     }
   },
   actions: {
@@ -28,8 +28,7 @@ export default new Vuex.Store({
       Object.keys(newData).forEach(item => {
         for(let i=0; i<arr.length; i++) {
           if(arr[i].id == item) {
-            console.log(newData[item]);
-            arr[i].priceUsd = newData[item];
+            arr[i].priceUsd = newData[item]; break;
           }
         }
       });
